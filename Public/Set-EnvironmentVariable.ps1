@@ -39,22 +39,23 @@ ValueType       : String
 BeforeExpansion :
 
 .EXAMPLE
-PS C:\> Set-EnvironmentVariable -name TestPathVar -Value '%TEMPT%\TestValue' -Scope Machine -ValueType ExpandString -Inherit Auto
-
-Name            : TestPathVar
-Value           : %TEMPT%\TestValue
-Scope           : Machine
-ValueType       : String
-BeforeExpansion :
-
-.EXAMPLE
 PS C:\> Set-EnvironmentVariable -name TestPathVar -Value '%TEMP%\TestValue' -Scope Machine -ValueType ExpandString -Inherit Auto
 
 Name            : TestPathVar
-Value           : %TEMP%\TestValue
+Value           : C:\Users\USERNAME\AppData\Local\Temp\TestValue
+Scope           : Machine
+ValueType       : ExpandString
+BeforeExpansion : %TEMP%\TestValue
+
+
+.EXAMPLE
+PS C:\> Set-EnvironmentVariable -name TestPathVar -Value '%TEMP%\TestValue' -Scope Machine -ValueType String -Inherit Auto
+
+Name            : TestPathVar
+Value           : C:\Users\USERNAME\AppData\Local\Temp\TestValue
 Scope           : Machine
 ValueType       : String
-BeforeExpansion :
+BeforeExpansion : C:\Users\USERNAME\AppData\Local\Temp\TestValue
 
 Because we set the ValueType to ExpandString, the value was set without expanding the string
 

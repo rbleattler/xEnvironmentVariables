@@ -34,7 +34,7 @@ Name            : TestVar
 Value           : TestValue
 Scope           : Machine
 ValueType       : String
-BeforeExpansion :
+BeforeExpansion : TestValue
 
 .EXAMPLE
 PS C:\> Get-EnvironmentVariable -name TestPathVar -Scope Machine -ShowProperties
