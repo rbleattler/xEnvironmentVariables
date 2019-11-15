@@ -13,7 +13,7 @@ Import-Module $ModuleManifestPath
 Describe 'Tests for EnvVar' {
     Context "Tests for getter for current process" {
         It "gets an environment variable for current process" {
-            $var = Get-EnvironmentVariable -Name USERPROFILE -Scope Process
+            $var = Get-EnvironmentVariable -Name USERPROFILE -Scope Process -ShowProperties
 
             $var.Name | Should Be "USERPROFILE"
             $var.Value | Should Be $Env:USERPROFILE
@@ -83,7 +83,7 @@ Describe 'Tests for EnvVar' {
             $var.Value | Should Be "basic_value"
             $var.ValueType | Should Be "String"
             $var.Scope | Should Be "User"
-            $var.BeforeExpansion | Should BeNullOrEmpty
+            $var.BeforeExpansion | Should be "basic_value"
             "$var" | Should Be "basic_value"
 
             # manual check
