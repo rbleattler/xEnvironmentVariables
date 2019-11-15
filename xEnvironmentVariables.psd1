@@ -105,10 +105,10 @@
             Tags                     = @("environment", "envvar", "env", "path", "windows", "registry")
 
             # A URL to the license for this module.
-            LicenseUri               = 'https://github.com/GNQG/pwsh-EnvVar/blob/master/LICENSE'
+            LicenseUri               = 'https://github.com/rbleattler/xEnvironmentVariables/blob/master/LICENSE.txt'
 
             # A URL to the main website for this project.
-            ProjectUri               = 'https://github.com/GNQG/pwsh-EnvVar'
+            ProjectUri               = 'https://github.com/rbleattler/xEnvironmentVariables'
 
             # A URL to an icon representing this module.
             # IconUri = ''
