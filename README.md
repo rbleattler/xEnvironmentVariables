@@ -104,4 +104,4 @@ PS C:\> Get-EnvironmentVariable -name TestPathVar -Scope Machine -Expanded
 
 ## License
 
-[MIT License (c) 2019 @rbleattler](LICENSE)
+[MIT License (c) 2019 @rbleattler](LICENSE.txt)
