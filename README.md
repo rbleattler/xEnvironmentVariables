@@ -1,6 +1,6 @@
 # xEnvironmentVariables
 
-[![Build Status](https://rableattler.visualstudio.com/xEnvironmentVariables/_apis/build/status/xEnvironmentVariables?branchName=master)](https://rableattler.visualstudio.com/xEnvironmentVariables/_build/latest?definitionId=1&branchName=master)
+[![Build Status](https://rableattler.visualstudio.com/xEnvironmentVariables/_apis/build/status/GItHub?branchName=master)](https://rableattler.visualstudio.com/xEnvironmentVariables/_build/latest?definitionId=2&branchName=master)
 [![PowerShell Gallery](https://img.shields.io/powershellgallery/v/xEnvironmentVariables)](https://www.powershellgallery.com/packages/xEnvironmentVariables/)
 [![PowerShell Gallery](https://img.shields.io/powershellgallery/p/xEnvironmentVariables)](https://www.powershellgallery.com/packages/xEnvironmentVariables/)
 
