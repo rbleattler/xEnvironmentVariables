@@ -18,7 +18,7 @@ jobs:
         name: test_deps
         displayName: Install tests' dependencies
       - powershell: |
-          Invoke-Pester test/EnvVar.Tests.ps1
+          Invoke-Pester test/xEnvironmentVariables.Tests.ps1
         name: test_body
         displayName: Run tests
   - deployment: publish
@@ -36,13 +36,14 @@ jobs:
               displayName: Install dependencies for deployment
             - checkout: self
             - powershell: |
-                New-Item EnvVar -ItemType Directory
-                Copy-Item test, EnvVar.psd1, EnvVar.psm1, LICENSE, README.md -Destination EnvVar -Recurse
+                New-Item xEnvironmentVariables -ItemType Directory
+                Copy-Item test, Public, Private, en-US, xEnvironmentVariables.psd1, xEnvironmentVariables.psm1, LICENSE.txt, README.md -Destination xEnvironmentVariables -Recurse
               name: deploy_prepare
               displayName: Prepare files
             - powershell: |
-                Publish-Module -Path EnvVar -NuGetApiKey $Env:NUGET_APIKEY
+                Publish-Module -Path xEnvironmentVariables -NuGetApiKey $Env:NUGET_APIKEY
               name: deploy_publish
               displayName: Publish the module to PowerShell Gallery
               env:
                 NUGET_APIKEY: $(nuget_api_secret)
+
