@@ -13,7 +13,7 @@
     # RootModule = ''
 
     # Version number of this module.
-    ModuleVersion        = '0.1.3'
+    ModuleVersion        = '0.1.5'
 
     # Supported PSEditions
     CompatiblePSEditions = @('Core', 'Desktop')
@@ -61,9 +61,12 @@
     ScriptsToProcess     = @(
         'Private\Get-EnvironmentPath.ps1',
         'Private\New-EnvironmentVariableObject.ps1',
+        'Private\Convert-KeyValuePair.ps1',
         'Private\Update-EnvironmentVariableSettings.ps1',
+        'Private\Format-HashTable.ps1',
         'Public\Get-EnvironmentVariable.ps1',
-        'Public\Set-EnvironmentVariable.ps1'
+        'Public\Set-EnvironmentVariable.ps1',
+        'Public\Get-EnvironmentVariables.ps1'
     )
 
     # Type files (.ps1xml) to be loaded when importing this module

@@ -24,7 +24,6 @@ Describe 'Tests for xEnvironmentVariables' {
             "$var" | Should Be $Env:USERPROFILE
         }
     }
-
     Context "Tests for setter for current process" {
         It "sets a basic environment variable for current process" {
             $params = @{
@@ -136,6 +135,42 @@ Describe 'Tests for xEnvironmentVariables' {
                 "User"
             )
             $Env:xEnvironmentVariables_TEST_SET_USER_EX = $null
+        }
+    }
+    Context "Tests Get-EnvironmentVariables Output for current process" {
+        $BasicGet = [System.Environment]::GetEnvironmentVariables("Process")
+        foreach ($key in $BasicGet.Keys) {
+            It "gets the correct value of the $key variable from current process" {
+                $var = Get-EnvironmentVariables -Scope Process
+                $BasicGetValue = $BasicGet.$key
+                $var.$key | Should Be $BasicGetValue
+            }
+        }
+    }
+    Context "Tests Get-EnvironmentVariables Output for User" {
+        $BasicGet = [System.Environment]::GetEnvironmentVariables("User")
+        foreach ($key in $BasicGet.Keys) {
+            It "gets the correct value of the $key variable from User" {
+                $var = Get-EnvironmentVariables -Scope User
+                $BasicGetValue = $BasicGet.$key
+                $var.$key | Should Be $BasicGetValue
+            }
+        }
+    }
+    Context "Tests Get-EnvironmentVariables Output for Machine" {
+        $BasicGet = [System.Environment]::GetEnvironmentVariables("Machine")
+        foreach ($key in $BasicGet.Keys) {
+            It "gets the correct value of the $key variable from Machine" {
+                $var = Get-EnvironmentVariables -Scope Machine
+                $BasicGetValue = $BasicGet.$key
+                $var.$key | Should Be $BasicGetValue
+            }
+        }
+    }
+    Context "Tests Get-EnvironmentVariables Output is JSON" {
+        It "Outputs the data as JSON" {
+            $var = Get-EnvironmentVariables -OutputType JSON
+            $var | ConvertFrom-Json | Should BeOfType [Object[]]
         }
     }
 }
