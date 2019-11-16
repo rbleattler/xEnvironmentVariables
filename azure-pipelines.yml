@@ -25,7 +25,7 @@ jobs:
     displayName: Publish to PowerShell Gallery
     dependsOn: [test]
     #condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v'))
-    condition: and(succeeded()
+    condition: succeeded()
     environment: PSGallery
     strategy:
       runOnce:
