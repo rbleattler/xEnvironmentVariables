@@ -1,6 +1,6 @@
 # xEnvironmentVariables
 
-[![Build Status](https://rableattler.visualstudio.com/xEnvironmentVariables/_apis/build/status/GItHub?branchName=master)](https://rableattler.visualstudio.com/xEnvironmentVariables/_build/latest?definitionId=2&branchName=master)
+[![Build Status](https://rableattler.visualstudio.com/xEnvironmentVariables/_apis/build/status/rbleattler.xEnvironmentVariables?branchName=master)](https://rableattler.visualstudio.com/xEnvironmentVariables/_build/latest?definitionId=3&branchName=master)
 [![PowerShell Gallery](https://img.shields.io/powershellgallery/v/xEnvironmentVariables)](https://www.powershellgallery.com/packages/xEnvironmentVariables/)
 [![PowerShell Gallery](https://img.shields.io/powershellgallery/p/xEnvironmentVariables)](https://www.powershellgallery.com/packages/xEnvironmentVariables/)
 
@@ -100,7 +100,142 @@ PS C:\> Get-EnvironmentVariable -name TestPathVar -Scope Machine -Expanded
 %TEMP%\TestValue2
 ```
 
+#### Get Environment Variables in the Machine Scope
 
+```powershell
+PS C:\> Get-EnvironmentVariables -Scope Machine
+PROCESSOR_LEVEL                 : 23
+TestPathVar2                    : C:\Users\USER\AppData\Local\Temp\TestValue2
+USERNAME                        : SYSTEM
+PROCESSOR_ARCHITECTURE          : AMD64
+TestVar                         : TestValue
+NUMBER_OF_PROCESSORS            : 12
+PROCESSOR_REVISION              : 0802
+...
+```
+
+#### Get Environment Variables in the Process Process
+
+```powershell
+PS C:\> Get-EnvironmentVariables
+USERDOMAIN                      : ComputerDomain
+COLORTERM                       : truecolor
+ComSpec                         : C:\WINDOWS\system32\cmd.exe
+TERM_PROGRAM_VERSION            : 1.40.0
+TestPathVar2                    : C:\WINDOWS\TEMP\TestValue2
+CommonProgramFiles              : C:\Program Files\Common Files
+NUMBER_OF_PROCESSORS            : 12
+...
+```
+
+#### Get Environment Variables and output as JSON
+
+```powershell
+PS C:\> Get-EnvironmentVariables -OutputType JSON
+[
+  {
+    "Name": "PROCESSOR_IDENTIFIER",
+    "Value": "AMD64 Family 23 Model 8 Stepping 2, AuthenticAMD"
+  },
+  {
+    "Name": "PROCESSOR_ARCHITECTURE",
+    "Value": "AMD64"
+  },
+  {
+    "Name": "ProgramData",
+    "Value": "C:\\ProgramData"
+  },
+  {
+    "Name": "OS",
+    "Value": "Windows_NT"
+  },
+  {
+    "Name": "TestValue2",
+    "Value": "%TMP%\\TestValue3"
+  },
+  {
+    "Name": "USERPROFILE",
+    "Value": "C:\\Users\\USERNAME"
+  },
+  {
+    "Name": "ALLUSERSPROFILE",
+    "Value": "C:\\ProgramData"
+  },
+  {
+    "Name": "CommonProgramW6432",
+    "Value": "C:\\Program Files\\Common Files"
+  },
+  {
+    "Name": "TestPathVar2",
+    "Value": "C:\\WINDOWS\\TEMP\\TestValue2"
+  },
+  {
+    "Name": "PROCESSOR_LEVEL",
+    "Value": "23"
+  },
+  {
+    "Name": "ProgramFiles(x86)",
+    "Value": "C:\\Program Files (x86)"
+  },
+  {
+    "Name": "ProgramW6432",
+    "Value": "C:\\Program Files"
+  },
+  {
+    "Name": "HOMEDRIVE",
+    "Value": "C:"
+  },
+...
+]
+```
+
+#### Get Environment Variables and output as CSV
+
+```powershell
+PS C:\> Get-EnvironmentVariables -OutputType CSV
+PROCESSOR_IDENTIFIER,PROCESSOR_ARCHITECTURE,ProgramData,OS,TestValue2...
+"AMD64 Family 23 Model 8 Stepping 2, AuthenticAMD",AMD64,C:\ProgramData,Windows_NT,%TMP%\TestValue3...
+```
+
+#### Get Environment Variables and output as Array
+
+```powershell
+PS C:\> Get-EnvironmentVariables -OutputType Array
+Name                            Value
+----                            -----
+PROCESSOR_IDENTIFIER            AMD64 Family 23 Model 8 Stepping 2, AuthenticAMD
+PROCESSOR_ARCHITECTURE          AMD64
+ProgramData                     C:\ProgramData
+OS                              Windows_NT
+TestValue2                      %TMP%\TestValue3
+...
+```
+
+#### Get Environment Variable Names only and output as Array
+
+```powershell
+PS C:\> Get-EnvironmentVariables -OutputType Array -Names
+
+Name
+----
+PROCESSOR_IDENTIFIER
+PROCESSOR_ARCHITECTURE
+ProgramData
+OS
+TestValue2
+DriverData
+ComSpec
+USERPROFILE
+ALLUSERSPROFILE
+LOGONSERVER
+USERDOMAIN_ROAMINGPROFILE
+TERM_PROGRAM_VERSION
+PSExecutionPolicyPreference
+...
+```
+
+#### Get-EnvironmentVariables Special Note ####
+When returning only names or values, you must specify another output type as the default output type is a Custom Object containing both Names and Values.
 
 ## License
 
